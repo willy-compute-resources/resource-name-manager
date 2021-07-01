@@ -1,0 +1,33 @@
+syntax = "proto3";
+option java_package = "software.thewillyhuman.rnm";
+
+package services;
+
+service ResourceNameManagerService {
+
+    rpc RequestResourceName(RequestResourceNameRequest) returns (RequestResourceNameResponse) {}
+
+    rpc GetResourceForResourceName(GetResourceForResourceNameRequest) returns (GetResourceForResourceNameResponse) {}
+}
+
+message RequestResourceNameRequest {
+    string partition = 1;
+    string service = 2;
+    string region = 3;
+    string accountId = 4;
+}
+
+message RequestResourceNameResponse {
+    string resource_name = 1;
+}
+
+message GetResourceForResourceNameRequest {
+    string resource_name = 1;
+}
+
+message GetResourceForResourceNameResponse {
+    string partition = 1;
+    string service = 2;
+    string region = 3;
+    string accountId = 4;
+}
